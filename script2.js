@@ -154,7 +154,27 @@ const linkedList = () => {
         return false
     }
 
-    return {appendNode, prependNode, getHead, getValue, size, getTail, atIndex, pop, contains}
+    let toString = () => {
+
+        let arr = []
+
+        
+        if (head == null){
+            return false
+        }
+
+        let pointer = head
+
+        for (let i = 0; i < length; i ++) {
+            arr.push(pointer.value)
+            pointer = pointer.nextNode
+        }
+
+        return arr
+
+    }
+
+    return {appendNode, prependNode, getHead, getValue, size, getTail, atIndex, pop, contains, toString}
 }
 
 let lis = linkedList()
@@ -173,9 +193,8 @@ let testing = lis.getValue('lol')
 
 let last = lis.getTail()
 
-console.log(lis.contains('lol'))
+console.log(lis.toString())
 
-console.log(last)
 
 
 
