@@ -174,7 +174,51 @@ const linkedList = () => {
 
     }
 
-    return {appendNode, prependNode, getHead, getValue, size, getTail, atIndex, pop, contains, toString}
+    let insertAt = (value, index) => {
+
+        if (head == null) {
+            return 'please use append or prepend node'
+        }
+
+        let pointer = head
+
+        for (let i = 0; i < index-1; i++) {
+            pointer = pointer.nextNode
+        }
+
+
+        length ++ 
+
+        let temp = pointer.nextNode
+        const newNode = node(value)
+        newNode.nextNode = temp
+        pointer.nextNode = newNode
+
+    }
+
+    let removeAt = (index) => {
+        if (!head) return null;
+
+        let pointer = head
+
+        let toAppend = head
+
+        for (let i = 0; i < index-1; i++) {
+            pointer = pointer.nextNode
+        }
+
+        for (let i = 0; i < index+1; i++) {
+            toAppend = toAppend.nextNode
+        }
+
+
+        pointer.nextNode = toAppend
+        length -- 
+
+
+    }
+
+    return {appendNode, prependNode, getHead, getValue, size, getTail, atIndex, pop, contains, toString, insertAt, removeAt}
 }
 
 let lis = linkedList()
@@ -193,7 +237,16 @@ let testing = lis.getValue('lol')
 
 let last = lis.getTail()
 
+
+
 console.log(lis.toString())
+
+lis.insertAt('work?', 3)
+
+lis.removeAt(2)
+
+console.log(lis.toString())
+
 
 
 
